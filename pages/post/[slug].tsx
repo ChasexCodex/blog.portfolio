@@ -28,6 +28,7 @@ const Post = ({data: post}: any) => {
         <img src={post.thumbnail} alt={post.title}/>
         <p>{post.description}</p>
         <p>{post.author} / {post.created_at} / {post.updated_at}</p>
+        <p>{post.content}</p>
       </div>
   )
 }
