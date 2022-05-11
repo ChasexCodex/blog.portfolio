@@ -5,8 +5,8 @@ import {getPosts} from '../data/posts'
 import type {GetStaticProps, NextPage} from 'next'
 import {PostBanner} from '../components'
 
-export const getStaticProps: GetStaticProps = () => {
-  const posts = getPosts()
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await getPosts()
 
   return {
     props: {
@@ -27,7 +27,7 @@ const Main: NextPage<Props> = ({posts}) => {
           <title>Elyas Al-Amri{"'"}s Blog</title>
         </Head>
         <div>
-          {posts.map((post: any) => <PostBanner key={post.id} post={post}/>)}
+          {posts.map((post: Post) => <PostBanner key={post.id} post={post}/>)}
         </div>
       </div>
   )
