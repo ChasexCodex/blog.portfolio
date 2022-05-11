@@ -12,7 +12,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 
-export const getStaticProps: GetStaticProps = async ({params}) => {
+export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({params}) => {
+  if (!params) {
+    throw new Error('params is null or undefined')
+  }
+
   const postData = await getPostsData(params.slug)
 
   return {

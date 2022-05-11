@@ -4,6 +4,7 @@ import {getPosts} from '../data/posts'
 
 import type {GetStaticProps, NextPage} from 'next'
 import {PostBanner} from '../components'
+import {Post} from '../types'
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPosts()
