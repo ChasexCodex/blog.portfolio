@@ -1,13 +1,22 @@
-import fakeDB from '../db.json'
+import {supabase} from './supabase'
+import {Post} from '../types'
 
-export const getPosts = (limit?: number) => {
-  return fakeDB.posts
+export const getPosts = async (limit: number = 15) => {
+  const res = await supabase.from('posts').select().limit(limit)
+  return res.data as Post[]
 }
 
-export const getPostsPaths = () => {
-  return fakeDB.posts.map(p => p.slug)
+export const getPostsPaths = async () => {
+  const res = await supabase.from('posts').select('slug')
+  return res.data as string[]
 }
 
-export const getPostsData = (slug: string) => {
-  return fakeDB.posts.find(p => p.slug === slug)
+export const getPostsData = async (slug: string) => {
+  const res = await supabase.from('posts').select().eq('slug', slug)
+
+  if (!res.data || res.data?.length === 0) {
+    throw new Error(`post with slug "${slug}" not found`)
+  }
+
+  return res.data[0] as Post
 }
