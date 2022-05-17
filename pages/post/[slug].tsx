@@ -1,9 +1,13 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import {getPostsData, getPostsPaths} from '../../data/posts'
+import {getPostsData} from '../../data/posts'
+import {prisma} from '../../prisma'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await getPostsPaths()
-  const paths = res.map(slug => ({params: {slug}}))
+  const res = await prisma.post.findMany({
+    select: {slug: true},
+  })
+
+  const paths = res.map(post => ({params: post}))
 
   return {
     paths,
