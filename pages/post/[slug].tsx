@@ -1,6 +1,6 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import {getPostsData} from '../../data/posts'
 import {prisma} from '../../prisma'
+import {Post} from '../../types'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await prisma.post.findMany({
@@ -18,19 +18,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({params}) => {
   if (!params) {
-    throw new Error('params is null or undefined')
+    return {notFound: true}
   }
 
-  const postData = await getPostsData(params.slug)
+  const post = await prisma.post.findFirst({
+    where: {slug: params.slug}
+  })
 
   return {
     props: {
-      data: postData,
+      post,
     },
   }
 }
 
-const Post = ({data: post}: any) => {
+type Props = {
+  post: Post | any
+}
+
+const Post = ({post}: Props) => {
   return (
       <div>
         <p>{post.title}</p>
