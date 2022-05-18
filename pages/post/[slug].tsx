@@ -10,6 +10,7 @@ import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
+import styles from '../../styles/Post.module.css'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await prisma.post.findMany({
@@ -23,7 +24,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   }
 }
-
 
 export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({params}) => {
   if (!params) {
@@ -70,6 +70,7 @@ export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({param
   }
 }
 
+
 type Props = {
   post: Post | any
   source: MDXRemoteSerializeResult
@@ -77,13 +78,20 @@ type Props = {
 
 const Post = ({post, source}: Props) => {
   return (
-      <div>
-        <p>{post.title}</p>
-        <img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' image'}/>
-        <p>{post.description}</p>
-        <article>
-          <MDXRemote {...source}/>
-        </article>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <div className={styles.info}>
+            <img className={styles.thumbnail} src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' image'}/>
+            <div>
+              <p className={styles.title}>{post.title}</p>
+              <p className={styles.description}>{post.description ?? 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias commodi eum in iste laudantium placeat quaerat quas totam vero voluptates.'}</p>
+            </div>
+          </div>
+          <div className={styles.hr}/>
+          <article className={styles.article}>
+            <MDXRemote {...source}/>
+          </article>
+        </div>
       </div>
   )
 }
