@@ -47,7 +47,7 @@ const Main: NextPage<Props> = ({posts}) => {
         <Head>
           <title>Elyas Al-Amri{'\''}s Blog</title>
         </Head>
-        <div>
+        <div className={styles.grid}>
           {posts.map(post => <PostBanner key={post.id} post={post}/>)}
         </div>
       </div>

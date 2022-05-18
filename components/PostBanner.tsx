@@ -1,15 +1,27 @@
 import Link from 'next/link'
+import styles from '../styles/Banner.module.css'
 
 const PostBanner = ({post}: any) => {
   return (
-      <div>
-        <Link href={`/post/${post.slug}`}>
-          <a><p>{post.title}</p></a>
-        </Link>
+      <div className={styles.container}>
+        <div className={styles.info}>
+          <Link href={`/post/${post.slug}`}>
+            <a className={styles.title}>{post.title}</a>
+          </Link>
 
-        <img src={post.thumbnail} alt={post.title}/>
-        <p>{post.description}</p>
-        <p>{post.author} / {post.created_at} / {post.updated_at}</p>
+          {/*<p>{post.description}</p>*/}
+          {post.author !== process.env.NEXT_PUBLIC_DEFAULT_AUTHOR &&
+            <p>{post.author}</p>
+          }
+          <div className={styles.space}/>
+          <div className={styles.timestamp}>
+            <p className={styles.published}>Published: {post.created_at}</p>
+            {post.updated_at !== post.created_at &&
+              <p>Last Edit: {post.updated_at}</p>
+            }
+          </div>
+        </div>
+        <img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title} className={styles.thumbnail}/>
       </div>
   )
 }
