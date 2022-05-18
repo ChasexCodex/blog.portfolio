@@ -22,8 +22,18 @@ export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({param
   }
 
   const post = await prisma.post.findFirst({
-    where: {slug: params.slug}
+    where: {
+      slug: params.slug,
+      published: true,
+    },
   })
+
+  if (!post) {
+    return {notFound: true}
+  }
+
+  post.created_at = JSON.stringify(post.created_at)
+  post.updated_at = JSON.stringify(post.updated_at)
 
   return {
     props: {
