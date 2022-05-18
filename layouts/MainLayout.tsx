@@ -1,11 +1,12 @@
 import {ReactElement} from 'react'
 import {FooterInfo, NavBar} from '../components'
+import styles from '../styles/MainLayout.module.css'
 
 const MainLayout = (page: ReactElement) => {
   return (
-      <div className="w-screen min-h-screen">
+      <div className={styles.root}>
         <NavBar/>
-        <main>
+        <main className={styles.main}>
           {page}
         </main>
         <FooterInfo/>
