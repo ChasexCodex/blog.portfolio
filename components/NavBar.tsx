@@ -1,8 +1,12 @@
+import styles from '../styles/NavBar.module.css'
+
 const NavBar = () => {
   return (
-      <nav>
-        <p>Elyas Al-Amri{"'"}s Blog</p>
-        <a href="#">Portfolio</a>
+      <nav className={styles.container}>
+        <p className={styles.title}>Elyas Al-Amri{"'"}s Blog</p>
+        <div className={styles.hold}>
+          <a className={styles.portfolio} href="#">Portfolio</a>
+        </div>
       </nav>
   )
 }
