@@ -23,24 +23,24 @@ const FooterInfo = () => {
 
 const NavBar = () => {
   return (
-      <nav>
-        <a href={process.env.APP_URL}>
-          Elyas Al-Amri{"'"}s Blog
+      <nav className="h-20 shadow-md flex flex-row items-center px-4">
+        <a className="mr-auto text-4xl font-bold"
+           href={process.env.APP_URL}>
+          Elyas Al-Amri{'\''}s Blog
         </a>
-        <div>
-          <a href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}>
-            Portfolio
-          </a>
-        </div>
+        <a className="text-2xl font-extrabold"
+           href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}>
+          Portfolio
+        </a>
       </nav>
   )
 }
 
 const MainLayout = (page: ReactElement) => {
   return (
-      <div>
+      <div className="flex flex-col w-screen min-h-screen">
         <NavBar/>
-        <main>
+        <main className="flex-1 flex flex-col w-full">
           {page}
         </main>
         <FooterInfo/>
