@@ -10,8 +10,6 @@ import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
-import styles from '../../styles/Post.module.css'
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await prisma.post.findMany({
     select: {slug: true},
@@ -78,17 +76,17 @@ type Props = {
 
 const Post = ({post, source}: Props) => {
   return (
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <div className={styles.info}>
-            <img className={styles.thumbnail} src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' image'}/>
+      <div>
+        <div>
+          <div>
+            <img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' image'}/>
             <div>
-              <p className={styles.title}>{post.title}</p>
-              <p className={styles.description}>{post.description ?? 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias commodi eum in iste laudantium placeat quaerat quas totam vero voluptates.'}</p>
+              <p>{post.title}</p>
+              <p>{post.description ?? 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias commodi eum in iste laudantium placeat quaerat quas totam vero voluptates.'}</p>
             </div>
           </div>
-          <div className={styles.hr}/>
-          <article className={styles.article}>
+          <div/>
+          <article>
             <MDXRemote {...source}/>
           </article>
         </div>

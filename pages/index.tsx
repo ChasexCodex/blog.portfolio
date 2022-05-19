@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 
 import type {GetStaticProps, NextPage} from 'next'
 import {PostBanner} from '../components'
@@ -43,11 +42,11 @@ type Props = {
 
 const Main: NextPage<Props> = ({posts}) => {
   return (
-      <div className={styles.container}>
+      <div>
         <Head>
           <title>Elyas Al-Amri{'\''}s Blog</title>
         </Head>
-        <div className={styles.grid}>
+        <div>
           {posts.map(post => <PostBanner key={post.id} post={post}/>)}
         </div>
       </div>

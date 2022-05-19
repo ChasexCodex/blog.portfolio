@@ -2,8 +2,6 @@ import {GetStaticPaths, GetStaticProps, NextPage} from 'next'
 import {Post} from '../../../types'
 import {prisma} from '../../../prisma'
 
-import styles from '../../../styles/PostList.module.css'
-
 const perPage = 10
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -48,11 +46,11 @@ type PostProps = {
 
 const Banner = ({post}: PostProps) => {
   return (
-      <div key={post.id} className={styles.banner}>
-        <div className={styles.bancon}>
-          <p className={styles.title}>{post.title}</p>
+      <div key={post.id}>
+        <div>
+          <p>{post.title}</p>
           <p>{post.author}</p>
-          <div className={styles.timestamp}>
+          <div>
             <p>
               <span>Published: </span>
               <span>{post.created_at}</span>
@@ -62,8 +60,8 @@ const Banner = ({post}: PostProps) => {
               <span>{post.updated_at}</span>
             </p>
           </div>
-          <div className={styles.space}/>
-          <img className={styles.thumbnail} src="https://picsum.photos/400/400"/>
+          <div/>
+          <img src="https://picsum.photos/400/400"/>
         </div>
       </div>
   )
@@ -75,7 +73,7 @@ type Props = {
 
 const Posts: NextPage<Props> = ({posts}) => {
   return (
-      <div className={styles.container}>
+      <div>
         {posts.map(post => <Banner key={post.id} post={post}/>)}
       </div>
   )
