@@ -3,18 +3,16 @@ import Image from 'next/image'
 
 const FooterInfo = () => {
   return (
-      <footer>
-        <div>
+      <footer className="h-32 flex flex-row bg-gray-900 px-4 space-x-4 mt-4">
+        <div className="flex-1 flex flex-row items-center justify-evenly my-4 px-4 text-2xl text-white font-semibold">
+          <a>Posts</a>
+          <a>Portfolio</a>
+        </div>
+        <div className="bg-white flex flex-row justify-center items-center space-x-8 py-4 px-8 my-4">
+          <p className="text-xl font-semibold italic">Made by Elyas A. Al-Amri</p>
           <div>
-            <p>Made by Elyas</p>
-          </div>
-          <div>
-            <p>
-              <span>Powered By</span>
-              <span>
-                <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16}/>
-              </span>
-            </p>
+            <p>Powered By</p>
+            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16}/>
           </div>
         </div>
       </footer>
