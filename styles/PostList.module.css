@@ -1,0 +1,35 @@
+.container {
+  width: 100%;
+  display: grid;
+  grid-column: 2;
+  grid-auto-flow: row;
+}
+
+.banner {
+  width: 30rem;
+  height: 40rem;
+  padding: 1rem;
+  background: #9f9f9f;
+}
+
+.bancon {
+  display: flex;
+  flex-direction: column;
+}
+
+.space {
+  flex: 1;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.timestamp {
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnail {
+
+}

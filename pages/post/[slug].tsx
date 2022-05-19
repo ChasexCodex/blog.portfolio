@@ -41,8 +41,8 @@ export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({param
     return {notFound: true}
   }
 
-  post.created_at = JSON.stringify(post.created_at)
-  post.updated_at = JSON.stringify(post.updated_at)
+  post.created_at = JSON.stringify(post.created_at) as any
+  post.updated_at = JSON.stringify(post.updated_at) as any
 
   const {content} = matter(post.content)
   const source = await serialize(content, {
