@@ -36,7 +36,7 @@ const NavBar = () => {
 
 const MainLayout = (page: ReactElement) => {
   return (
-      <div className="flex flex-col w-screen min-h-screen">
+      <div className="flex flex-col w-screen min-h-screen bg-gray-100">
         <NavBar/>
         <main className="flex-1 flex flex-col w-full">
           {page}
