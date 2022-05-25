@@ -1,8 +1,9 @@
 import type {NextApiRequest, NextApiResponse} from 'next'
 
 type Data = {
-	message: string,
+	message: string
 	revalidated: boolean
+	error?: any
 }
 
 export default async function handler(
@@ -16,7 +17,7 @@ export default async function handler(
 	try {
 		await res.unstable_revalidate(`/${req.query.path}`)
 		return res.json({message: 'Revalidated successfully', revalidated: true})
-	} catch (err) {
-		return res.status(500).send({message: 'Error revalidating', revalidated: false})
+	} catch (error) {
+		return res.status(500).send({message: 'Error revalidating', revalidated: false, error})
 	}
 }
