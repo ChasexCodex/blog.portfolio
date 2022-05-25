@@ -3,11 +3,12 @@ import type {GetStaticProps, NextPage} from 'next'
 import {Post} from '../types'
 import {prisma} from '../prisma'
 import Banner from '../components/Banner'
+import {convertTimestampToString} from '../utils/orm'
 
 const postsCount = 10
 
 export const getStaticProps: GetStaticProps = async () => {
-	const posts = (await prisma.post.findMany({
+	const res = await prisma.post.findMany({
 		take: postsCount,
 		where: {published: true},
 		orderBy: {created_at: 'asc'},
@@ -21,11 +22,9 @@ export const getStaticProps: GetStaticProps = async () => {
 			category: true,
 			tags: true,
 		},
-	})).map(post => ({
-		...post,
-		created_at: JSON.stringify(post.created_at),
-		updated_at: JSON.stringify(post.updated_at),
-	}))
+	})
+
+	const posts = res.map(convertTimestampToString)
 
 	return {
 		props: {
