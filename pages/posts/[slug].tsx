@@ -1,16 +1,11 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {prisma} from '../../prisma'
 import {Post} from '../../types'
-import {serialize} from 'next-mdx-remote/serialize'
-import matter from 'gray-matter'
 import {MDXRemote, MDXRemoteSerializeResult} from 'next-mdx-remote'
 
-import rehypeHighlight from 'rehype-highlight'
-import rehypeCodeTitles from 'rehype-code-titles'
-import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-
 import 'github-markdown-css'
+import {serialize} from '../../utils/mdx'
+import {convertTimestampToString} from '../../utils/orm'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -25,42 +20,24 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	}
 }
 
-export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({params}) => {
+export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({params}) => {
 	if (!params) {
 		return {notFound: true}
 	}
 
-	const post = await prisma.post.findFirst({
+	const res = await prisma.post.findFirst({
 		where: {
 			slug: params.slug,
 			published: true,
 		},
 	})
 
-	if (!post) {
+	if (!res) {
 		return {notFound: true}
 	}
 
-	post.created_at = JSON.stringify(post.created_at) as any
-	post.updated_at = JSON.stringify(post.updated_at) as any
-
-	const {content} = matter(post.content)
-	const source = await serialize(content, {
-		mdxOptions: {
-			rehypePlugins: [
-				rehypeSlug,
-				[
-					rehypeAutolinkHeadings,
-					{
-						properties: {className: ['anchor']},
-					},
-					{behaviour: 'wrap'},
-				],
-				rehypeHighlight,
-				rehypeCodeTitles,
-			],
-		},
-	})
+	const post = convertTimestampToString(res)
+	const source = await serialize(post.content)
 
 	return {
 		props: {
@@ -85,7 +62,7 @@ const Post = ({post, source}: Props) => {
 					<p className="text-4xl font-semibold">{post.title}</p>
 					<p className="pt-4">
 						{post.description ?? 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias commodi eum in iste laudantium placeat quaerat quas totam vero.'}
-					1</p>
+					</p>
 					<div className="flex-1"/>
 					<p className="">{post.created_at}</p>
 					<p className="">{post.updated_at}</p>
