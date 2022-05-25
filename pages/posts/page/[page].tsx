@@ -2,6 +2,7 @@ import {GetStaticPaths, GetStaticProps, NextPage} from 'next'
 import {Post} from '../../../types'
 import {prisma} from '../../../prisma'
 import Banner from '../../../components/Banner'
+import {convertTimestampToString} from '../../../utils/orm'
 
 const perPage = 10
 
@@ -21,18 +22,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	}
 }
 
-export const getStaticProps: GetStaticProps<any, { page: string }> = async ({params}) => {
+export const getStaticProps: GetStaticProps<any, {page: string}> = async ({params}) => {
 	const page = params?.page ? parseInt(params.page) : 1
 
-	const posts = (await prisma.post.findMany({
+	const res = await prisma.post.findMany({
 		skip: (page - 1) * perPage,
 		take: perPage,
-	}))
-		.map(post => ({
-			...post,
-			created_at: JSON.stringify(post.created_at),
-			updated_at: JSON.stringify(post.updated_at),
-		}))
+	})
+
+	const posts = res.map(convertTimestampToString)
 
 	return {
 		props: {
