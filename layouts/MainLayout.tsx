@@ -11,11 +11,15 @@ const FooterInfo = () => {
 					Portfolio
 				</a>
 			</div>
-			<div className="bg-white flex flex-row justify-center items-center space-x-8 py-4 px-8 my-4">
+			<div className="bg-white flex flex-row justify-center items-center space-x-8 py-4 px-8 my-4
+											dark:bg-black dark:text-white
+											">
 				<p className="text-xl font-semibold italic">Made by Elyas A. Al-Amri</p>
 				<div>
 					<p>Powered By</p>
-					<Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16}/>
+					<div className="bg-white flex justify-center py-1 rounded-full mt-2">
+						<Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16}/>
+					</div>
 				</div>
 			</div>
 		</footer>
