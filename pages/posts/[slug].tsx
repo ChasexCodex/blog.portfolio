@@ -30,6 +30,7 @@ export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({param
 			slug: params.slug,
 			published: true,
 		},
+		include: {category: true, tags: true},
 	})
 
 	if (!res) {
@@ -64,8 +65,12 @@ const Post = ({post, source}: Props) => {
 						{post.description ?? 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias commodi eum in iste laudantium placeat quaerat quas totam vero.'}
 					</p>
 					<div className="flex-1"/>
-					<p className="">{post.created_at}</p>
-					<p className="">{post.updated_at}</p>
+					<div>
+						<p className="">{post.created_at}</p>
+						<p className="">{post.updated_at}</p>
+						<p>Category: <span>{post.category.name}</span></p>
+						<span>Tags: <span>{post.tags.map((t: any) => <span key={t.id}>{t.name}</span>)}</span></span>
+					</div>
 				</div>
 			</div>
 			<article className="markdown-body py-2 px-8">
