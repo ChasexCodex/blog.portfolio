@@ -27,7 +27,7 @@ const NavBar = () => {
 		<nav className="h-20 shadow-md flex flex-row items-center px-4">
 			<Link href="/">
 				<a className="mr-auto text-4xl font-bold">
-					Elyas Al-Amri{'\''} s Blog
+					Elyas Al-Amri{'\''}s Blog
 				</a>
 			</Link>
 			<a className="text-2xl font-extrabold"
