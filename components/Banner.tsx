@@ -1,6 +1,11 @@
 import Link from 'next/link'
+import {Post} from '../types'
 
-const Banner = ({post}: any) => {
+type Props = {
+	post: Post | any
+}
+
+const Banner = ({post}: Props) => {
 	return (
 		<div className="flex flex-row bg-white shadow-md h-full">
 			<div className="mr-auto p-4 flex flex-col">
