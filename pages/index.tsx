@@ -3,7 +3,7 @@ import type {GetStaticProps, NextPage} from 'next'
 import {Post} from '@/types'
 import {prisma} from '@/prisma'
 import {Banner} from '@/components'
-import {convertTimestampToString} from '@/utils/orm'
+import {convertTimestampToMoment} from '@/utils/orm'
 
 const postsCount = 10
 
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		},
 	})
 
-	const posts = res.map(convertTimestampToString)
+	const posts = res.map(p => convertTimestampToMoment(p, 'MMMM Do YYYY, h:mm:ss a'))
 
 	return {
 		props: {
