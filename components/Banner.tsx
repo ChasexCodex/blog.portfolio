@@ -1,5 +1,5 @@
 import Link from './Link'
-import {Post} from '../types'
+import {Post} from '@/types'
 
 type Props = {
 	post: Post | any

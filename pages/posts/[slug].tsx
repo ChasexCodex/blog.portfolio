@@ -1,9 +1,9 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import {prisma} from '../../prisma'
-import {Post} from '../../types'
+import {prisma} from '@/prisma'
+import {Post} from '@/types'
 import {MDXRemote, MDXRemoteSerializeResult} from 'next-mdx-remote'
-import {serialize} from '../../utils/mdx'
-import {convertTimestampToString} from '../../utils/orm'
+import {serialize} from '@/utils/mdx'
+import {convertTimestampToString} from '@/utils/orm'
 
 import 'github-markdown-css'
 
