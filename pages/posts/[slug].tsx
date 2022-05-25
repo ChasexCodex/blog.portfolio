@@ -3,10 +3,9 @@ import {prisma} from '@/prisma'
 import {Post} from '@/types'
 import {MDXRemote, MDXRemoteSerializeResult} from 'next-mdx-remote'
 import {serialize} from '@/utils/mdx'
-import {convertTimestampToString} from '@/utils/orm'
+import {convertTimestampToMoment} from '@/utils/orm'
 
 import 'github-markdown-css'
-import moment from 'moment'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -38,7 +37,7 @@ export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({param
 		return {notFound: true}
 	}
 
-	const post = convertTimestampToString(res)
+	const post = convertTimestampToMoment(res, 'MMMM Do YYYY, h:mm:ss a')
 	const source = await serialize(post.content)
 
 	return {
@@ -82,8 +81,8 @@ const Post = ({post, source}: Props) => {
 								)}
 							</div>
 						</div>
-						<p className="">Published: {moment(post.created_at).format('MMMM Do YYYY, h:mm:ss a')}</p>
-						<p className="">Last Updated: {moment(post.updated_at).format('MMMM Do YYYY, h:mm:ss a')}</p>
+						<p className="">Published: {post.created_at}</p>
+						<p className="">Last Updated: {post.updated_at}</p>
 					</div>
 				</div>
 			</div>
