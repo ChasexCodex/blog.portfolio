@@ -73,14 +73,14 @@ const Post = ({post, source}: Props) => {
 								{post.category.name}
 							</span>
 						</p>
-						<p>
+						<div>
 							<span className="mr-2">Tags:</span>
 							<div className="inline-block">
 								{post.tags.map((t: any) =>
 									<span className="bg-green-500 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white" key={t.id}>{t.name}</span>
 								)}
 							</div>
-						</p>
+						</div>
 						<p className="">Published: {post.created_at}</p>
 						<p className="">Last Updated: {post.updated_at}</p>
 					</div>
