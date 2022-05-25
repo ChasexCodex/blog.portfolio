@@ -1,11 +1,11 @@
 module.exports = {
-  content: [
-    './pages/**/*.tsx',
-    './components/**/*.tsx',
-    './layouts/**/*.tsx',
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+	content: [
+		'./pages/**/*.tsx',
+		'./components/**/*.tsx',
+		'./layouts/**/*.tsx',
+	],
+	theme: {
+		extend: {},
+	},
+	plugins: [],
 }

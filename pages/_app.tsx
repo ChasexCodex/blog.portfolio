@@ -5,17 +5,17 @@ import MainLayout from '../layouts/MainLayout'
 import '../styles/globals.css'
 
 type NextPageWithLayout = NextPage & {
-  Layout?: (page: ReactElement) => ReactNode
+	Layout?: (page: ReactElement) => ReactNode
 }
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
+	Component: NextPageWithLayout
 }
 
 function MyApp({Component, pageProps}: AppPropsWithLayout) {
-  const Layout = Component.Layout ?? MainLayout
+	const Layout = Component.Layout ?? MainLayout
 
-  return Layout(<Component {...pageProps}/>)
+	return Layout(<Component {...pageProps}/>)
 }
 
 export default MyApp
