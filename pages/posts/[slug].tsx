@@ -2,10 +2,10 @@ import {GetStaticPaths, GetStaticProps} from 'next'
 import {prisma} from '../../prisma'
 import {Post} from '../../types'
 import {MDXRemote, MDXRemoteSerializeResult} from 'next-mdx-remote'
-
-import 'github-markdown-css'
 import {serialize} from '../../utils/mdx'
 import {convertTimestampToString} from '../../utils/orm'
+
+import 'github-markdown-css'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -57,6 +57,7 @@ type Props = {
 const Post = ({post, source}: Props) => {
 	return (
 		<div className="flex flex-col max-w-5xl mx-auto my-4">
+
 			<div className="flex flex-row mb-4">
 				<img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' image'}/>
 				<div className="flex flex-col px-4 py-2">
@@ -66,16 +67,30 @@ const Post = ({post, source}: Props) => {
 					</p>
 					<div className="flex-1"/>
 					<div>
-						<p className="">{post.created_at}</p>
-						<p className="">{post.updated_at}</p>
-						<p>Category: <span>{post.category.name}</span></p>
-						<span>Tags: <span>{post.tags.map((t: any) => <span key={t.id}>{t.name}</span>)}</span></span>
+						<p>
+							<span className="mr-2">Category:</span>
+							<span className="bg-orange-400 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white">
+								{post.category.name}
+							</span>
+						</p>
+						<p>
+							<span className="mr-2">Tags:</span>
+							<div className="inline-block">
+								{post.tags.map((t: any) =>
+									<span className="bg-green-500 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white" key={t.id}>{t.name}</span>
+								)}
+							</div>
+						</p>
+						<p className="">Published: {post.created_at}</p>
+						<p className="">Last Updated: {post.updated_at}</p>
 					</div>
 				</div>
 			</div>
+
 			<article className="markdown-body py-2 px-8">
 				<MDXRemote {...source}/>
 			</article>
+
 		</div>
 	)
 }
