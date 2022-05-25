@@ -6,6 +6,7 @@ import {serialize} from '@/utils/mdx'
 import {convertTimestampToString} from '@/utils/orm'
 
 import 'github-markdown-css'
+import moment from 'moment'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -81,8 +82,8 @@ const Post = ({post, source}: Props) => {
 								)}
 							</div>
 						</div>
-						<p className="">Published: {post.created_at}</p>
-						<p className="">Last Updated: {post.updated_at}</p>
+						<p className="">Published: {moment(post.created_at).format('MMMM Do YYYY, h:mm:ss a')}</p>
+						<p className="">Last Updated: {moment(post.updated_at).format('MMMM Do YYYY, h:mm:ss a')}</p>
 					</div>
 				</div>
 			</div>

@@ -6,8 +6,8 @@ type HasTimestamp<T> = {
 export const convertTimestampToString = <T extends HasTimestamp<Date>>(model: T) => {
 	return {
 		...model,
-		created_at: JSON.stringify(model.created_at),
-		updated_at: JSON.stringify(model.updated_at),
+		created_at: model.created_at.toISOString(),
+		updated_at: model.updated_at.toISOString(),
 	}
 }
 
