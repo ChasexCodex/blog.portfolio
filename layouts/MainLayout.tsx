@@ -1,12 +1,12 @@
 import {ReactElement} from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from '../components/Link'
 
 const FooterInfo = () => {
 	return (
 		<footer className="h-32 flex flex-row bg-gray-900 px-4 space-x-4 mt-4">
 			<div className="flex-1 flex flex-row items-center justify-evenly my-4 px-4 text-2xl text-white font-semibold">
-				<Link href="/posts/page/1"><a>Posts</a></Link>
+				<Link href="/posts/page/1">Posts</Link>
 				<a href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}>
 					Portfolio
 				</a>
@@ -25,10 +25,8 @@ const FooterInfo = () => {
 const NavBar = () => {
 	return (
 		<nav className="h-20 shadow-md flex flex-row items-center px-4">
-			<Link href="/">
-				<a className="mr-auto text-4xl font-bold">
-					Elyas Al-Amri{'\''}s Blog
-				</a>
+			<Link href="/" className="mr-auto text-4xl font-bold">
+				Elyas Al-Amri{'\''}s Blog
 			</Link>
 			<a className="text-2xl font-extrabold"
 				 href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}>
