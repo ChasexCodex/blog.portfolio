@@ -14,10 +14,11 @@ export default async function handler(
 		return res.status(401).json({message: 'Invalid token', revalidated: false})
 	}
 
-	try {
-		await res.unstable_revalidate(`/${req.query.path}`)
-		return res.json({message: 'Revalidated successfully', revalidated: true})
-	} catch (error) {
-		return res.status(500).send({message: 'Error revalidating', revalidated: false, error})
-	}
+	return res.unstable_revalidate(`/${req.query.path}`)
+		.then(() => {
+			res.json({message: 'Revalidated successfully', revalidated: true})
+		})
+		.catch(error => {
+			res.status(500).send({message: 'Error revalidating', revalidated: false, error})
+		})
 }
