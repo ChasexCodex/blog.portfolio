@@ -18,7 +18,21 @@ const Banner = ({post}: Props) => {
 				{post.author !== process.env.NEXT_PUBLIC_DEFAULT_AUTHOR &&
 					<p>{post.author}</p>
 				}
-				<div className="mt-auto">
+				<div className="mt-auto flex flex-col space-y-2">
+					<p>
+						<span className="mr-2">Category:</span>
+						<span className="bg-orange-400 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white">
+								{post.category.name}
+						</span>
+					</p>
+					<div>
+						<span className="mr-2">Tags: </span>
+						<div className="inline-block">
+							{post.tags.map((t: any) =>
+								<span className="bg-green-500 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white" key={t.id}>{t.name}</span>
+							)}
+						</div>
+					</div>
 					<p>Published: {post.created_at}</p>
 					{post.updated_at !== post.created_at &&
 						<p>Last Edit: {post.updated_at}</p>
