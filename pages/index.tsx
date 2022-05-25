@@ -2,7 +2,7 @@ import Head from 'next/head'
 import type {GetStaticProps, NextPage} from 'next'
 import {Post} from '@/types'
 import {prisma} from '@/prisma'
-import Banner from '@/components/Banner'
+import {Banner} from '@/components'
 import {convertTimestampToString} from '@/utils/orm'
 
 const postsCount = 10
