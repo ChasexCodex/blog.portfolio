@@ -7,7 +7,9 @@ type Props = {
 
 const Banner = ({post}: Props) => {
 	return (
-		<div className="flex flex-row bg-white shadow-md h-full">
+		<div className="flex flex-row bg-white shadow-md h-full
+										dark:bg-gray-800 dark:text-white
+										">
 			<div className="mr-auto p-4 flex flex-col">
 				<Link href={`/posts/${post.slug}`} className="text-2xl">
 					{post.title}
