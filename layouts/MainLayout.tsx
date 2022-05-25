@@ -24,7 +24,7 @@ const FooterInfo = () => {
 
 const NavBar = () => {
 	return (
-		<nav className="h-20 shadow-md flex flex-row items-center px-4">
+		<nav className="h-20 shadow-md flex flex-row items-center px-4 dark:bg-black dark:text-gray-200">
 			<Link href="/" className="mr-auto text-4xl font-bold">
 				Elyas Al-Amri{'\''}s Blog
 			</Link>
@@ -38,7 +38,7 @@ const NavBar = () => {
 
 const MainLayout = (page: ReactElement) => {
 	return (
-		<div className="flex flex-col w-screen min-h-screen bg-gray-100">
+		<div className="flex flex-col w-screen min-h-screen bg-gray-100 dark:bg-neutral-900">
 			<NavBar/>
 			<main className="flex-1 flex flex-col w-full">
 				{page}
