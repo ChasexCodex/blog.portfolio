@@ -40,6 +40,7 @@ export const getStaticProps: GetStaticProps<any, {page: string}> = async ({param
 		props: {
 			posts,
 		},
+		revalidate: 60,
 	}
 }
 
