@@ -58,7 +58,9 @@ const Post = ({post, source}: Props) => {
 	return (
 		<div className="flex flex-col max-w-5xl mx-auto my-4">
 
-			<div className="flex flex-row mb-4">
+			<div className="flex flex-row mb-4
+											dark:text-white
+											">
 				<img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' image'}/>
 				<div className="flex flex-col px-4 py-2">
 					<p className="text-4xl font-semibold">{post.title}</p>
