@@ -2,7 +2,7 @@ import type {NextApiRequest, NextApiResponse} from 'next'
 
 type Data = {
 	message: string
-	revalidated: boolean
+	success: boolean
 	error?: any
 }
 
@@ -10,21 +10,21 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<Data>,
 ) {
-	const {id, token} = req.body
+	const {path, token} = req.body
 
 	if (token !== process.env.REVALIDATE_TOKEN) {
-		return res.status(401).json({message: 'Invalid token', revalidated: false})
+		return res.status(401).json({message: 'Invalid token', success: false})
 	}
 
-	if (!id) {
-		res.status(400).json({message: 'id is required', revalidated: false})
+	if (!path) {
+		res.status(400).json({message: 'path is required', success: false})
 	}
 
-	return res.unstable_revalidate(`/${id}`)
+	return res.unstable_revalidate(`/${path}`)
 		.then(() => {
-			res.json({message: 'Revalidated successfully', revalidated: true})
+			res.json({message: 'Revalidated successfully', success: true})
 		})
 		.catch(error => {
-			res.status(500).send({message: 'Error revalidating', revalidated: false, error})
+			res.status(500).send({message: 'Error revalidating', success: false, error})
 		})
 }
