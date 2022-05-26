@@ -89,7 +89,7 @@ const Post = ({post, source}: Props) => {
 				</div>
 			</div>
 
-			<article className="markdown-body py-2 px-8">
+			<article className="markdown-body markdown py-2 px-8">
 				<MDXRemote {...source}/>
 			</article>
 

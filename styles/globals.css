@@ -1,3 +1,5 @@
+@import './markdown.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,3 +14,4 @@
 		scrollbar-width: none;
 	}
 }
+
