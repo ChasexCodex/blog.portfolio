@@ -28,6 +28,10 @@ export const getStaticProps: GetStaticProps<any, {page: string}> = async ({param
 	const res = await prisma.post.findMany({
 		skip: (page - 1) * perPage,
 		take: perPage,
+		include: {
+			category: true,
+			tags: true,
+		}
 	})
 
 	const posts = res.map(p => convertTimestampToMoment(p, 'MMMM Do YYYY, h:mm:ss a'))
@@ -46,7 +50,7 @@ type Props = {
 const Posts: NextPage<Props> = ({posts}) => {
 	return (
 		<div className="grid grid-cols-2 mx-auto gap-2 w-full max-w-7xl my-4">
-			{posts.map(post => <div key={post.id} className="h-40"><Banner post={post}/></div>)}
+			{posts.map(post => <div key={post.id} className="h-60"><Banner post={post}/></div>)}
 		</div>
 	)
 }
