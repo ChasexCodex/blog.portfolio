@@ -28,10 +28,13 @@ export const getStaticProps: GetStaticProps<any, {page: string}> = async ({param
 	const res = await prisma.post.findMany({
 		skip: (page - 1) * perPage,
 		take: perPage,
+		where: {
+			published: true,
+		},
 		include: {
 			category: true,
 			tags: true,
-		}
+		},
 	})
 
 	const posts = res.map(p => convertTimestampToMoment(p, 'MMMM Do YYYY, h:mm:ss a'))
