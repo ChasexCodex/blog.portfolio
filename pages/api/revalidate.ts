@@ -10,11 +10,17 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<Data>,
 ) {
-	if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+	const {id, token} = req.body
+
+	if (token !== process.env.REVALIDATE_TOKEN) {
 		return res.status(401).json({message: 'Invalid token', revalidated: false})
 	}
 
-	return res.unstable_revalidate(`/${req.query.path}`)
+	if (!id) {
+		res.status(400).json({message: 'id is required', revalidated: false})
+	}
+
+	return res.unstable_revalidate(`/${id}`)
 		.then(() => {
 			res.json({message: 'Revalidated successfully', revalidated: true})
 		})
