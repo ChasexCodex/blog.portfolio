@@ -18,18 +18,29 @@ const Banner = ({post}: Props) => {
 				{post.author !== process.env.NEXT_PUBLIC_DEFAULT_AUTHOR &&
 					<p>{post.author}</p>
 				}
+
+				<p>
+					{post.description}
+				</p>
+
 				<div className="mt-auto flex flex-col space-y-2">
 					<p>
-						<span className="mr-2">Category:</span>
+						<span className="font-bold mr-2">Category:</span>
 						<CategoryLabel category={post.category}/>
 					</p>
 					<div>
-						<span className="mr-2">Tags:</span>
+						<span className="font-bold mr-2">Tags:</span>
 						<TagList tags={post.tags}/>
 					</div>
-					<p>Published: {post.created_at}</p>
+					<p>
+						<span className="font-bold mr-2">Published:</span>
+						<span>{post.created_at}</span>
+					</p>
 					{post.updated_at !== post.created_at &&
-						<p>Last Edit: {post.updated_at}</p>
+						<p>
+							<span className="font-bold mr-2">Last Edit:</span>
+							<span>{post.updated_at}</span>
+						</p>
 					}
 				</div>
 			</div>
