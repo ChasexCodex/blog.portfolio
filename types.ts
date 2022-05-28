@@ -10,3 +10,9 @@ export type Post = {
 	updated_at: TimeStamp
 	author: string
 }
+
+export type Category = {
+	id: ID
+	name: string
+}
+
