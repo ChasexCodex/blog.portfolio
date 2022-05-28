@@ -56,40 +56,48 @@ type Props = {
 
 const Post = ({post, source}: Props) => {
 	return (
-		<div className="flex flex-col max-w-5xl mx-auto my-4">
+		<div className="flex flex-col max-w-5xl w-full mx-auto py-4">
 
-			<div className="flex flex-row mb-4
+			<div className="flex flex-row pb-4
 											dark:text-white
 											">
 				<img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' image'}/>
 				<div className="flex flex-col px-4 py-2">
 					<p className="text-4xl font-semibold">{post.title}</p>
-					<p className="pt-4">
-						{post.description ?? 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias commodi eum in iste laudantium placeat quaerat quas totam vero.'}
-					</p>
+					<p className="pt-4">{post.description}</p>
 					<div className="flex-1"/>
 					<div>
 						<p>
-							<span className="mr-2">Category:</span>
+							<span className="font-bold mr-2">Category:</span>
 							<span className="bg-orange-400 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white">
 								{post.category.name}
 							</span>
 						</p>
 						<div>
-							<span className="mr-2">Tags:</span>
-							<div className="inline-block">
+							<span className="font-bold mr-2">Tags:</span>
+							<div className="inline-block space-x-1">
 								{post.tags.map((t: any) =>
 									<span className="bg-green-500 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white" key={t.id}>{t.name}</span>
 								)}
 							</div>
 						</div>
-						<p className="">Published: {post.created_at}</p>
-						<p className="">Last Updated: {post.updated_at}</p>
+						<p>
+							<span className="font-bold mr-2">Published:</span>
+							<span>{post.created_at}</span>
+						</p>
+						{post.updated_at !== post.created_at &&
+							<p>
+								<span className="font-bold mr-2">Last Updated:</span>
+								<span>{post.updated_at}</span>
+							</p>
+						}
 					</div>
 				</div>
 			</div>
 
-			<article className="markdown-body markdown py-2 px-8">
+			<article className="markdown-body markdown pb-8 border-b-8
+													dark:border-gray-800
+													">
 				<MDXRemote {...source}/>
 			</article>
 
