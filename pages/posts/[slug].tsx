@@ -6,6 +6,7 @@ import {serialize} from '@/utils/mdx'
 import {convertTimestampToMoment} from '@/utils/orm'
 
 import 'github-markdown-css'
+import {CategoryLabel} from '@/components'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -69,9 +70,7 @@ const Post = ({post, source}: Props) => {
 					<div>
 						<p>
 							<span className="font-bold mr-2">Category:</span>
-							<span className="bg-orange-400 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white">
-								{post.category.name}
-							</span>
+							<CategoryLabel category={post.category}/>
 						</p>
 						<div>
 							<span className="font-bold mr-2">Tags:</span>

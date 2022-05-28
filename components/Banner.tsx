@@ -1,4 +1,4 @@
-import Link from './Link'
+import {Link, CategoryLabel} from './'
 import {Post} from '@/types'
 
 type Props = {
@@ -21,9 +21,7 @@ const Banner = ({post}: Props) => {
 				<div className="mt-auto flex flex-col space-y-2">
 					<p>
 						<span className="mr-2">Category:</span>
-						<span className="bg-orange-400 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white">
-								{post.category.name}
-						</span>
+						<CategoryLabel category={post.category}/>
 					</p>
 					<div>
 						<span className="mr-2">Tags: </span>
