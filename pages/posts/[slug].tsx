@@ -7,6 +7,7 @@ import {convertTimestampToMoment} from '@/utils/orm'
 
 import 'github-markdown-css'
 import {CategoryLabel} from '@/components'
+import TagList from '@/components/TagList'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -74,11 +75,7 @@ const Post = ({post, source}: Props) => {
 						</p>
 						<div>
 							<span className="font-bold mr-2">Tags:</span>
-							<div className="inline-block space-x-1">
-								{post.tags.map((t: any) =>
-									<span className="bg-green-500 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white" key={t.id}>{t.name}</span>
-								)}
-							</div>
+							<TagList tags={post.tags}/>
 						</div>
 						<p>
 							<span className="font-bold mr-2">Published:</span>

@@ -1,4 +1,4 @@
-import {Link, CategoryLabel} from './'
+import {Link, CategoryLabel, TagList} from './'
 import {Post} from '@/types'
 
 type Props = {
@@ -24,14 +24,8 @@ const Banner = ({post}: Props) => {
 						<CategoryLabel category={post.category}/>
 					</p>
 					<div>
-						<span className="mr-2">Tags: </span>
-						<div className="inline-block space-x-1">
-							{post.tags.map((t: any) =>
-								<span className="bg-green-500 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white" key={t.id}>
-									{t.name}
-								</span>
-							)}
-						</div>
+						<span className="mr-2">Tags:</span>
+						<TagList tags={post.tags}/>
 					</div>
 					<p>Published: {post.created_at}</p>
 					{post.updated_at !== post.created_at &&
