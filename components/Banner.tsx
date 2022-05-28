@@ -27,9 +27,11 @@ const Banner = ({post}: Props) => {
 					</p>
 					<div>
 						<span className="mr-2">Tags: </span>
-						<div className="inline-block">
+						<div className="inline-block space-x-1">
 							{post.tags.map((t: any) =>
-								<span className="bg-green-500 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white" key={t.id}>{t.name}</span>
+								<span className="bg-green-500 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white" key={t.id}>
+									{t.name}
+								</span>
 							)}
 						</div>
 					</div>
@@ -39,7 +41,7 @@ const Banner = ({post}: Props) => {
 					}
 				</div>
 			</div>
-			<img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title}/>
+			<img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' title'}/>
 		</div>
 	)
 }
