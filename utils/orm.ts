@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 type HasTimestamp<T> = {
-	created_at: T 
+	created_at: T
 	updated_at: T
 }
 
