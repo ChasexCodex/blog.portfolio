@@ -1,17 +1,15 @@
 import {GetStaticPaths, GetStaticProps, NextPage} from 'next'
 import {Post} from '@/types'
 import {prisma} from '@/prisma'
-import {Banner} from '@/components'
+import {Banner, Link} from '@/components'
 import {convertTimestampToMoment} from '@/utils/orm'
+import Head from 'next/head'
+import {PostCounterCache} from '@/utils/model'
 
 const perPage = 10
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const postCount = await prisma.post.count({
-		where: {
-			published: true,
-		},
-	})
+	const postCount = await PostCounterCache.getCount()
 
 	const pages = Math.ceil(postCount / perPage)
 	const paths = Array.from({length: pages}, (_, i) => ({params: {page: (i + 1).toString()}}))
@@ -23,6 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps<any, {page: string}> = async ({params}) => {
+	const maxPage = await PostCounterCache.getCount()
 	const page = params?.page ? parseInt(params.page) : 1
 
 	const res = await prisma.post.findMany({
@@ -42,6 +41,8 @@ export const getStaticProps: GetStaticProps<any, {page: string}> = async ({param
 	return {
 		props: {
 			posts,
+			page,
+			maxPage,
 		},
 		revalidate: 60,
 	}
@@ -49,12 +50,45 @@ export const getStaticProps: GetStaticProps<any, {page: string}> = async ({param
 
 type Props = {
 	posts: Post[]
+	page: number
+	maxPage: number
 }
 
-const Posts: NextPage<Props> = ({posts}) => {
+const Posts: NextPage<Props> = ({posts, page, maxPage}) => {
 	return (
-		<div className="grid grid-cols-2 mx-auto gap-2 w-full max-w-7xl my-4">
-			{posts.map(post => <div key={post.id} className="h-60"><Banner post={post}/></div>)}
+		<div className="flex-1 flex flex-col">
+			<Head>
+				<title>Posts: Page {page} | Elyas Al-Amri{'\''}s Blog</title>
+			</Head>
+
+			<div className="grid grid-cols-2 mx-auto gap-2 w-full max-w-7xl my-4">
+				{posts.map(post =>
+					<div key={post.id} className="h-60">
+						<Banner post={post}/>
+					</div>
+				)}
+			</div>
+
+			{/*Pagination*/}
+			<div className="flex flex-row mx-auto mt-auto text-2xl
+											dark:text-white">
+				{page > 1 &&
+					<Link href={`/posts/${page-1}`} passHref
+								className="border px-1 pb-0.5 font-extrabold bg-blue-700 first:rounded-l">
+						{'<<'}
+					</Link>
+				}
+				<p className="border bg-blue-700 px-2 only:px-4 only:rounded first:rounded-l last:rounded-r">
+					{page}
+				</p>
+				{page < maxPage &&
+					<Link href={`/posts/${page+1}`} passHref
+								className="border px-1 pb-1 font-extrabold bg-blue-700 last:rounded-r">
+						{'>>'}
+					</Link>
+				}
+			</div>
+
 		</div>
 	)
 }
