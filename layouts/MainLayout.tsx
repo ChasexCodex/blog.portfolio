@@ -4,15 +4,15 @@ import {Link} from '@/components'
 
 const FooterInfo = () => {
 	return (
-		<footer className="h-32 flex flex-row bg-gray-900 px-4 space-x-4 mt-4">
+		<footer className="h-32 flex flex-row bg-gray-900 pl-4 space-x-4 mt-4">
 			<div className="flex-1 flex flex-row items-center justify-evenly my-4 px-4 text-2xl text-white font-semibold">
 				<Link href="/posts/page/1">Posts</Link>
 				<a href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}>
 					Portfolio
 				</a>
 			</div>
-			<div className="bg-white flex flex-row justify-center items-center space-x-8 py-4 px-8 my-4
-											dark:bg-black dark:text-white
+			<div className="bg-white flex flex-row justify-center items-center space-x-8 py-4 px-8
+											dark:text-white dark:bg-gradient-to-tr dark:from-black dark:to-neutral-600
 											">
 				<p className="text-xl font-semibold italic">Made by Elyas A. Al-Amri</p>
 				<div>

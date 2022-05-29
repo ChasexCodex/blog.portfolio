@@ -11,7 +11,7 @@ const Banner = ({post}: Props) => {
 										dark:bg-gray-800 dark:text-white
 										">
 			<div className="mr-auto p-4 flex flex-col">
-				<Link href={`/posts/${post.slug}`} className="text-2xl">
+				<Link href={`/posts/${post.slug}`} className="text-2xl underline">
 					{post.title}
 				</Link>
 
