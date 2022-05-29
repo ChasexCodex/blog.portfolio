@@ -9,6 +9,7 @@ import 'github-markdown-css'
 import {CategoryLabel} from '@/components'
 import TagList from '@/components/TagList'
 import Head from 'next/head'
+import AboutCard from '@/components/AboutCard'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -100,6 +101,7 @@ const Post = ({post, source}: Props) => {
 				<MDXRemote {...source}/>
 			</article>
 
+			<AboutCard/>
 		</div>
 	)
 }
