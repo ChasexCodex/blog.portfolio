@@ -43,7 +43,7 @@ const Home: NextPage<Props> = ({posts}) => {
 		<div className="w-full flex flex-col items-center">
 			<div className="w-full max-w-6xl my-4">
 				<Head>
-					<title>Elyas Al-Amri{'\''}s Blog</title>
+					<title>Main | Elyas Al-Amri{'\''}s Blog</title>
 				</Head>
 				<div className="grid grid-column-1 gap-y-4">
 					{posts.map(post => <Banner key={post.id} post={post}/>)}

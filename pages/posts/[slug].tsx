@@ -8,6 +8,7 @@ import {convertTimestampToMoment} from '@/utils/orm'
 import 'github-markdown-css'
 import {CategoryLabel} from '@/components'
 import TagList from '@/components/TagList'
+import Head from 'next/head'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -59,13 +60,15 @@ type Props = {
 const Post = ({post, source}: Props) => {
 	return (
 		<div className="flex flex-col max-w-5xl w-full mx-auto py-4">
-
+			<Head>
+				<title>{post.title} | by {post.author}</title>
+			</Head>
 			<div className="flex flex-row pb-4
 											dark:text-white
 											">
 				<img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' image'}/>
 				<div className="flex flex-col px-4 py-2">
-					<p className="text-4xl font-semibold">{post.title}</p>
+					<h1 className="text-4xl font-semibold">{post.title}</h1>
 					<p className="pt-4">{post.description}</p>
 					<div className="flex-1"/>
 					<div>
@@ -91,8 +94,8 @@ const Post = ({post, source}: Props) => {
 				</div>
 			</div>
 
-			<article className="markdown-body markdown pb-8 border-b-8
-													dark:border-gray-800
+			<article className="markdown-body markdown py-8 border-b-4
+													dark:border-gray-400
 													">
 				<MDXRemote {...source}/>
 			</article>
