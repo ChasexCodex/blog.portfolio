@@ -10,6 +10,7 @@ import {CategoryLabel} from '@/components'
 import TagList from '@/components/TagList'
 import Head from 'next/head'
 import AboutCard from '@/components/AboutCard'
+import getReadingTime from 'reading-time'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -43,11 +44,13 @@ export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({param
 
 	const post = convertTimestampToMoment(res, 'MMMM Do YYYY, h:mm:ss a')
 	const source = await serialize(post.content)
+	const readingTime = getReadingTime(source.compiledSource).text
 
 	return {
 		props: {
 			post,
 			source,
+			readingTime,
 		},
 	}
 }
@@ -56,9 +59,10 @@ export const getStaticProps: GetStaticProps<any, {slug: string}> = async ({param
 type Props = {
 	post: Post | any
 	source: MDXRemoteSerializeResult
+	readingTime: string
 }
 
-const Post = ({post, source}: Props) => {
+const Post = ({post, source, readingTime}: Props) => {
 	return (
 		<div className="flex flex-col max-w-5xl w-full mx-auto py-4">
 			<Head>
@@ -91,6 +95,10 @@ const Post = ({post, source}: Props) => {
 								<span>{post.updated_at}</span>
 							</p>
 						}
+						<p className="mt-2">
+							<span className="mr-2 font-semibold italic">Estimated reading time:</span>
+							<span>{readingTime}</span>
+						</p>
 					</div>
 				</div>
 			</div>
