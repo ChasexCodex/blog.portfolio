@@ -5,7 +5,7 @@ import {Link} from '@/components'
 const FooterInfo = () => {
 	return (
 		<footer className="h-20 xl:h-32 flex flex-row bg-gray-900 pl-4 space-x-4 mt-4">
-			<div className="flex-1 flex flex-row items-center justify-evenly my-4 px-4 text-white font-semibold text-md
+			<div className="flex-1 flex flex-row items-center justify-around text-white font-semibold text-md
 											xl:text-2xl">
 				<Link href="/posts/page/1">Posts</Link>
 				<a href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}>
