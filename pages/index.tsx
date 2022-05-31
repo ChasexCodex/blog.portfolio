@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		where: {published: true},
 		orderBy: {created_at: 'asc'},
 		select: {
+			id: true,
 			title: true,
 			slug: true,
 			author: true,
