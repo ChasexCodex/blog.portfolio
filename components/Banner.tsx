@@ -16,7 +16,7 @@ const Banner = ({post}: Props) => {
 											xl:p-4
 											">
 				<Link href={`/posts/${post.slug}`}
-							className="text-xl underline
+							className="text-xl underline underline-offset-2
 												 xl:text-2xl
 												 ">
 					{post.title}
@@ -26,9 +26,11 @@ const Banner = ({post}: Props) => {
 					<p>{post.author}</p>
 				}
 
-				<p className="mt-0.5">{post.description}</p>
+				<p className="mt-0.5 flex-1 overflow-hidden">
+					{post.description}
+				</p>
 
-				<div className="mt-auto flex flex-col space-y-1 text-xs
+				<div className="mt-auto flex flex-col space-y-0.5 mt-1 text-xs
 												xl:space-y-2
 												">
 					<p>
