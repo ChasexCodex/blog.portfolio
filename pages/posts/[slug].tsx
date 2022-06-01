@@ -1,6 +1,6 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {prisma} from '@/prisma'
-import {Post} from '@/types'
+import {Post, Tag} from '@/types'
 import {MDXRemote, MDXRemoteSerializeResult} from 'next-mdx-remote'
 import {serialize} from '@/utils/mdx'
 import {convertTimestampToMoment} from '@/utils/orm'
@@ -12,6 +12,7 @@ import Head from 'next/head'
 import AboutCard from '@/components/AboutCard'
 import getReadingTime from 'reading-time'
 import {Image} from '@/components'
+import {Fragment} from 'react'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -68,6 +69,27 @@ const Post = ({post, source, readingTime}: Props) => {
 		<div className="flex flex-col max-w-5xl w-full mx-auto py-4 px-4">
 			<Head>
 				<title>{post.title} | by {post.author}</title>
+				<meta name="description" content={post.description} key="desc"/>
+				{/*TODO: add keywords*/}
+				{/*<meta name="keywords" />*/}
+
+				<meta property="og:title" content={post.title} key="og:title"/>
+				<meta property="og:image" content={post.thumbnail} key="og:image"/>
+				<meta property="og:url" content={`${process.env.NEXT_PUBLIC_APP_URL}/posts/${post.slug}`} key="og:url"/>
+				<meta property="og:description" content={post.description} key="og:desc"/>
+				<meta property="og:type" content="article" key="og:type"/>
+
+				<meta property="og:article:published_time" content={post.created_at}/>
+				<meta property="og:article:modified_at" content={post.created_at}/>
+				<meta property="og:article:author" content={process.env.NEXT_PUBLIC_DEFAULT_AUTHOR}/>
+				<meta property="og:article:section" content={post.category.name}/>
+
+				{post.tags.map((tag: Tag) => (
+					<Fragment key={tag.id}>
+						<meta name="og:article:tag" content={tag.name}/>
+					</Fragment>
+				))}
+
 			</Head>
 			<div className="flex flex-col
 											dark:text-white
