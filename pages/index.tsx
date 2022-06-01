@@ -47,6 +47,19 @@ const Home: NextPage<Props> = ({posts}) => {
 			<div className="w-full max-w-6xl my-4">
 				<Head>
 					<title>Main | Elyas Al-Amri{'\''}s Blog</title>
+					<meta name="description" content="Elyas A. Al-Amri's Official Blog. Join me every week for new posts." key="desc"/>
+
+					<meta property="og:title" content="Elyas A. Al-Amri's Official Website" key="og:title"/>
+					<meta property="og:image" content={`${process.env.NEXT_PUBLIC_APP_URL}/website.jpg`} key="og:image"/>
+					<meta property="og:image:type" content="image/jpeg"/>
+					<meta property="og:image:width" content="1000"/>
+					<meta property="og:image:height" content="425" />
+					<meta property="og:image:alt" content="Elyas with ambitous text"/>
+					<meta property="og:url" content={process.env.NEXT_PUBLIC_APP_URL} key="og:url"/>
+					<meta property="og:description" content="Elyas A. Al-Amri's Official Blog. Join me every week for new posts." key="og:desc"/>
+
+					<meta property="og:type" content="website"/>
+
 				</Head>
 				<div className="grid grid-column-1 gap-y-4">
 					{posts.map(post => (
