@@ -53,7 +53,7 @@ const Banner = ({post}: Props) => {
 			</div>
 			<div className="flex-1">
 				<div className="w-full aspect-w-4 aspect-h-3">
-					<Image layout="fill" src={post.thumbnail ?? 'https://picsum.photos/400/300'}
+					<Image layout="fill" src={post.thumbnail ?? '/404.jpg'}
 								 alt={post.title + ' title'}
 								 className="object-cover"
 					/>

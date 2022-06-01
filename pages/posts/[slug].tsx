@@ -75,7 +75,7 @@ const Post = ({post, source, readingTime}: Props) => {
 											">
 				<div className="w-full">
 					<div className="aspect-h-3 aspect-w-4">
-						<Image layout="fill" src={post.thumbnail ?? 'https://picsum.photos/400/300'} alt={post.title + ' image'}/>
+						<Image layout="fill" src={post.thumbnail ?? '/404.jpg'} alt={post.title + ' image'}/>
 					</div>
 				</div>
 				<div className="flex flex-col py-2
