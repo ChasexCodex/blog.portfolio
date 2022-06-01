@@ -13,5 +13,9 @@
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 		scrollbar-width: none;
 	}
+
+	::-webkit-scrollbar {
+		display: none;
+	}
 }
 
