@@ -1,5 +1,6 @@
 import {Link, CategoryLabel, TagList} from './'
 import {Post} from '@/types'
+import Image from 'next/image'
 
 type Props = {
 	post: Post | any
@@ -7,11 +8,17 @@ type Props = {
 
 const Banner = ({post}: Props) => {
 	return (
-		<div className="flex flex-row bg-white shadow-md h-full
-										dark:bg-gray-800 dark:text-white
+		<div className="flex flex-col-reverse bg-white shadow-md h-full overflow-hidden
+										dark:bg-gradient-to-bl dark:from-orange-900 dark:to-neutral-900 dark:text-white dark:shadow-zinc-800
+										xl:flex-row
 										">
-			<div className="mr-auto p-4 flex flex-col">
-				<Link href={`/posts/${post.slug}`} className="text-2xl underline">
+			<div className="flex-1 flex flex-col text-xs px-2 py-1
+											xl:p-4
+											">
+				<Link href={`/posts/${post.slug}`}
+							className="text-lg underline
+												 xl:text-2xl
+												 ">
 					{post.title}
 				</Link>
 
@@ -19,11 +26,11 @@ const Banner = ({post}: Props) => {
 					<p>{post.author}</p>
 				}
 
-				<p>
-					{post.description}
-				</p>
+				<p className="flex-1">{post.description}</p>
 
-				<div className="mt-auto flex flex-col space-y-2">
+				<div className="mt-auto flex flex-col space-y-1 text-xs
+												xl:space-y-2
+												">
 					<p>
 						<span className="font-bold mr-2">Category:</span>
 						<CategoryLabel category={post.category}/>
@@ -44,7 +51,9 @@ const Banner = ({post}: Props) => {
 					}
 				</div>
 			</div>
-			<img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' title'}/>
+			<Image width="400" height="300" src={post.thumbnail ?? 'https://picsum.photos/400/300'} alt={post.title + ' title'}
+						 className="object-cover"
+			/>
 		</div>
 	)
 }

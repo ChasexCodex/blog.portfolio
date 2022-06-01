@@ -10,7 +10,9 @@ const TagList = ({tags}: Props) => {
 		<div className="inline-block space-x-1">
 			{tags.map(t => (
 				<a key={t.id}
-					 className="inline-block bg-green-500 px-1.5 rounded-full text-xs py-0.5 font-semibold text-white">
+					 className="inline-block bg-green-500 px-1 transform rounded-full text-2xs font-medium text-white
+					 						xl:text-xs xl:px-1.5 xl:py-0.5 xl:font-semibold bg-green-700
+					 						">
 					{t.name}
 				</a>
 			))}
