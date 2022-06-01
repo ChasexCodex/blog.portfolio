@@ -21,7 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps<any, {page: string}> = async ({params}) => {
-	const maxPage = await PostCounterCache.getCount()
+	const maxPage = Math.ceil(await PostCounterCache.getCount() / perPage)
 	const page = params?.page ? parseInt(params.page) : 1
 
 	const res = await prisma.post.findMany({
@@ -73,7 +73,7 @@ const Posts: NextPage<Props> = ({posts, page, maxPage}) => {
 			<div className="flex flex-row mx-auto mt-auto text-2xl
 											dark:text-white">
 				{page > 1 &&
-					<Link href={`/posts/${page - 1}`}
+					<Link href={`/posts/page/${page - 1}`}
 								className="border px-1 pb-0.5 font-extrabold bg-blue-700 first:rounded-l">
 						{'<<'}
 					</Link>
@@ -82,7 +82,7 @@ const Posts: NextPage<Props> = ({posts, page, maxPage}) => {
 					{page}
 				</p>
 				{page < maxPage &&
-					<Link href={`/posts/${page + 1}`}
+					<Link href={`/posts/page/${page + 1}`}
 								className="border px-1 pb-1 font-extrabold bg-blue-700 last:rounded-r">
 						{'>>'}
 					</Link>
