@@ -12,11 +12,11 @@ const Banner = ({post}: Props) => {
 										dark:bg-gradient-to-bl dark:from-orange-900 dark:to-neutral-900 dark:text-white dark:shadow-zinc-800
 										xl:flex-row
 										">
-			<div className="flex-1 flex flex-col text-xs px-2 py-1
+			<div className="flex-1 flex flex-col text-xs px-4 py-1
 											xl:p-4
 											">
 				<Link href={`/posts/${post.slug}`}
-							className="text-lg underline
+							className="text-xl underline
 												 xl:text-2xl
 												 ">
 					{post.title}
@@ -26,7 +26,7 @@ const Banner = ({post}: Props) => {
 					<p>{post.author}</p>
 				}
 
-				<p className="flex-1">{post.description}</p>
+				<p className="mt-0.5">{post.description}</p>
 
 				<div className="mt-auto flex flex-col space-y-1 text-xs
 												xl:space-y-2
