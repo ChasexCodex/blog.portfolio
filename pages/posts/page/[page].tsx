@@ -54,43 +54,41 @@ type Props = {
 	maxPage: number
 }
 
-const Posts: NextPage<Props> = ({posts, page, maxPage}) => {
-	return (
-		<div className="flex-1 flex flex-col">
-			<Head>
-				<title>Posts: Page {page} | Elyas Al-Amri{'\''}s Blog</title>
-			</Head>
+const Posts: NextPage<Props> = ({posts, page, maxPage}) => (
+	<div className="flex-1 flex flex-col">
+		<Head>
+			<title>Posts: Page {page} | Elyas Al-Amri{'\''}s Blog</title>
+		</Head>
 
-			<div className="grid grid-cols-2 mx-auto gap-2 w-full max-w-7xl my-4">
-				{posts.map(post =>
-					<div key={post.id} className="h-60">
-						<Banner post={post}/>
-					</div>,
-				)}
-			</div>
-
-			{/*Pagination*/}
-			<div className="flex flex-row mx-auto mt-auto text-2xl
-											dark:text-white">
-				{page > 1 &&
-					<Link href={`/posts/page/${page - 1}`}
-								className="border px-1 pb-0.5 font-extrabold bg-blue-700 first:rounded-l">
-						{'<<'}
-					</Link>
-				}
-				<p className="border bg-blue-700 px-2 only:px-4 only:rounded first:rounded-l last:rounded-r">
-					{page}
-				</p>
-				{page < maxPage &&
-					<Link href={`/posts/page/${page + 1}`}
-								className="border px-1 pb-1 font-extrabold bg-blue-700 last:rounded-r">
-						{'>>'}
-					</Link>
-				}
-			</div>
-
+		<div className="grid grid-cols-2 mx-auto gap-2 w-full max-w-7xl my-4">
+			{posts.map(post =>
+				<div key={post.id} className="h-60">
+					<Banner post={post}/>
+				</div>,
+			)}
 		</div>
-	)
-}
+
+		{/*Pagination*/}
+		<div className="flex flex-row mx-auto mt-auto text-2xl
+											dark:text-white">
+			{page > 1 &&
+				<Link href={`/posts/page/${page - 1}`}
+							className="border px-1 pb-0.5 font-extrabold bg-blue-700 first:rounded-l">
+					{'<<'}
+				</Link>
+			}
+			<p className="border bg-blue-700 px-2 only:px-4 only:rounded first:rounded-l last:rounded-r">
+				{page}
+			</p>
+			{page < maxPage &&
+				<Link href={`/posts/page/${page + 1}`}
+							className="border px-1 pb-1 font-extrabold bg-blue-700 last:rounded-r">
+					{'>>'}
+				</Link>
+			}
+		</div>
+
+	</div>
+)
 
 export default Posts
