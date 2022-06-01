@@ -9,6 +9,7 @@ export type Post = {
 	created_at: TimeStamp
 	updated_at: TimeStamp
 	author: string
+	thumbnail: string
 }
 
 export type Category = {

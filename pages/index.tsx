@@ -23,6 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			updated_at: true,
 			category: true,
 			tags: true,
+			thumbnail: true,
 		},
 	})
 
