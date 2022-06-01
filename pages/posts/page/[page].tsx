@@ -27,6 +27,7 @@ export const getStaticProps: GetStaticProps<any, {page: string}> = async ({param
 	const res = await prisma.post.findMany({
 		skip: (page - 1) * perPage,
 		take: perPage,
+		orderBy: {created_at: 'desc'},
 		where: {
 			published: true,
 		},
@@ -60,8 +61,8 @@ const Posts: NextPage<Props> = ({posts, page, maxPage}) => (
 			<title>Posts: Page {page} | Elyas Al-Amri{'\''}s Blog</title>
 		</Head>
 
-		<div className="grid grid-cols-1 mx-auto gap-2 w-full max-w-screen-2xl my-4
-										xl:grid-cols-2
+		<div className="grid grid-cols-1 mx-auto gap-y-8 w-full max-w-screen-2xl my-4
+										xl:grid-cols-2 xl:gap-2
 										">
 			{posts.map(post =>
 				<div key={post.id} className="h-96 xl:h-64">
