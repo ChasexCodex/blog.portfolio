@@ -17,6 +17,7 @@ model Post {
     created_at DateTime @default(now())
     updated_at DateTime @default(now())
     author String?
+    thumbnail String?
     category Category @relation(fields: [categoryId],references: [id])
     categoryId Int
     tags Tag[] @relation(references: [id])
