@@ -11,6 +11,7 @@ import TagList from '@/components/TagList'
 import Head from 'next/head'
 import AboutCard from '@/components/AboutCard'
 import getReadingTime from 'reading-time'
+import Image from 'next/image'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -68,19 +69,22 @@ const Post = ({post, source, readingTime}: Props) => {
 			<Head>
 				<title>{post.title} | by {post.author}</title>
 			</Head>
-			<div className="flex flex-col pb-4 overflow-hidden
+			<div className="flex flex-col
 											dark:text-white
 											xl:flex-row
 											">
-				<img width="400" height="300" src={post.thumbnail ?? 'https://picsum.photos/400/300'}
-						 alt={post.title + ' image'}/>
+				<div className="w-full">
+					<div className="aspect-h-3 aspect-w-4">
+						<Image layout="fill" src={post.thumbnail ?? 'https://picsum.photos/400/300'} alt={post.title + ' image'}/>
+					</div>
+				</div>
 				<div className="flex flex-col py-2
 												xl:px-4
 												">
 					<p>
 					</p>
 					<h1 className="text-4xl font-semibold">{post.title}</h1>
-					<p className="pt-4">{post.description}</p>
+					<p className="pt-2 pb-4">{post.description}</p>
 					<div className="flex-1"/>
 					<div>
 						<p>
