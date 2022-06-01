@@ -1,8 +1,9 @@
 import Image from 'next/image'
 
 const AboutCard = () => (
-	<div className="shadow-md shadow-black mt-8 flex flex-row dark:text-white">
-		<div className="p-4 flex-1 bg-gradient-to-r from-purple-400 to-blue-700
+	<div className="shadow-md shadow-black mt-8 flex flex-col dark:text-white
+									xl:flex-row">
+		<div className="p-4 bg-gradient-to-r from-purple-400 to-blue-700
 										dark:from-purple-800 dark:to-blue-800 dark:opacity-80
 										">
 			<p className="text-3xl font-bold pb-2">
@@ -14,8 +15,12 @@ const AboutCard = () => (
 			</p>
 		</div>
 		{process.env.NEXT_PUBLIC_AUTHOR_IMAGE_URL &&
-			<Image src={process.env.NEXT_PUBLIC_AUTHOR_IMAGE_URL} alt="Elyas Al-Amri's Image" width={300} height={400}
-						 className="text-center"/>
+			<div className="relative">
+				<div className="aspect-h-4 aspect-w-3 xl:w-80">
+					<Image src={process.env.NEXT_PUBLIC_AUTHOR_IMAGE_URL} alt="Elyas Al-Amri's Image" layout="fill"
+								 className="text-center"/>
+				</div>
+			</div>
 		}
 	</div>
 )
