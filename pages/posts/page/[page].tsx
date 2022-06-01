@@ -60,9 +60,11 @@ const Posts: NextPage<Props> = ({posts, page, maxPage}) => (
 			<title>Posts: Page {page} | Elyas Al-Amri{'\''}s Blog</title>
 		</Head>
 
-		<div className="grid grid-cols-2 mx-auto gap-2 w-full max-w-7xl my-4">
+		<div className="grid grid-cols-1 mx-auto gap-2 w-full max-w-screen-2xl my-4
+										xl:grid-cols-2
+										">
 			{posts.map(post =>
-				<div key={post.id} className="h-60">
+				<div key={post.id} className="h-96 xl:h-64">
 					<Banner post={post}/>
 				</div>,
 			)}
@@ -70,7 +72,8 @@ const Posts: NextPage<Props> = ({posts, page, maxPage}) => (
 
 		{/*Pagination*/}
 		<div className="flex flex-row mx-auto mt-auto text-2xl
-											dark:text-white">
+										dark:text-white
+										">
 			{page > 1 &&
 				<Link href={`/posts/page/${page - 1}`}
 							className="border px-1 pb-0.5 font-extrabold bg-blue-700 first:rounded-l">

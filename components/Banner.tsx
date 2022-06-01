@@ -13,7 +13,7 @@ const Banner = ({post}: Props) => {
 										xl:flex-row
 										">
 			<div className="flex-1 flex flex-col text-xs px-4 py-1
-											xl:p-4
+											xl:px-2
 											">
 				<Link href={`/posts/${post.slug}`}
 							className="text-xl underline underline-offset-2
@@ -30,9 +30,7 @@ const Banner = ({post}: Props) => {
 					{post.description}
 				</p>
 
-				<div className="mt-auto flex flex-col space-y-0.5 mt-1 text-xs
-												xl:space-y-2
-												">
+				<div className="mt-auto flex flex-col space-y-0.5 mt-1 text-xs">
 					<p>
 						<span className="font-bold mr-2">Category:</span>
 						<CategoryLabel category={post.category}/>
@@ -53,9 +51,14 @@ const Banner = ({post}: Props) => {
 					}
 				</div>
 			</div>
-			<Image width="400" height="300" src={post.thumbnail ?? 'https://picsum.photos/400/300'} alt={post.title + ' title'}
-						 className="object-cover"
-			/>
+			<div className="flex-1">
+				<div className="w-full aspect-w-4 aspect-h-3">
+					<Image layout="fill" src={post.thumbnail ?? 'https://picsum.photos/400/300'}
+								 alt={post.title + ' title'}
+								 className="object-cover"
+					/>
+				</div>
+			</div>
 		</div>
 	)
 }
