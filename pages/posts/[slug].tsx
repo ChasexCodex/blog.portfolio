@@ -64,15 +64,21 @@ type Props = {
 
 const Post = ({post, source, readingTime}: Props) => {
 	return (
-		<div className="flex flex-col max-w-5xl w-full mx-auto py-4">
+		<div className="flex flex-col max-w-5xl w-full mx-auto py-4 px-4">
 			<Head>
 				<title>{post.title} | by {post.author}</title>
 			</Head>
-			<div className="flex flex-row pb-4
+			<div className="flex flex-col pb-4 overflow-hidden
 											dark:text-white
+											xl:flex-row
 											">
-				<img src={post.thumbnail ?? 'https://picsum.photos/400/400'} alt={post.title + ' image'}/>
-				<div className="flex flex-col px-4 py-2">
+				<img width="400" height="300" src={post.thumbnail ?? 'https://picsum.photos/400/300'}
+						 alt={post.title + ' image'}/>
+				<div className="flex flex-col py-2
+												xl:px-4
+												">
+					<p>
+					</p>
 					<h1 className="text-4xl font-semibold">{post.title}</h1>
 					<p className="pt-4">{post.description}</p>
 					<div className="flex-1"/>
@@ -95,7 +101,7 @@ const Post = ({post, source, readingTime}: Props) => {
 								<span>{post.updated_at}</span>
 							</p>
 						}
-						<p className="mt-2">
+						<p className="xl:mt-2">
 							<span className="mr-2 font-semibold italic">Estimated reading time:</span>
 							<span>{readingTime}</span>
 						</p>
@@ -103,8 +109,10 @@ const Post = ({post, source, readingTime}: Props) => {
 				</div>
 			</div>
 
+			<div className="border-t-4 border-b-4 h-[10px]"/>
+
 			<article className="markdown-body markdown py-8 border-b-4
-													dark:border-gray-400
+													dark:border-gray-400 break-after-left
 													">
 				<MDXRemote {...source}/>
 			</article>
