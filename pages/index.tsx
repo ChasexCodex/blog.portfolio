@@ -47,7 +47,11 @@ const Home: NextPage<Props> = ({posts}) => {
 					<title>Main | Elyas Al-Amri{'\''}s Blog</title>
 				</Head>
 				<div className="grid grid-column-1 gap-y-4">
-					{posts.map(post => <Banner key={post.id} post={post}/>)}
+					{posts.map(post => (
+						<div key={post.id} className="h-[30rem] xl:h-96">
+							<Banner post={post}/>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>
