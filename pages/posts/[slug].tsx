@@ -11,7 +11,7 @@ import TagList from '@/components/TagList'
 import Head from 'next/head'
 import AboutCard from '@/components/AboutCard'
 import getReadingTime from 'reading-time'
-import Image from 'next/image'
+import {Image} from '@/components'
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await prisma.post.findMany({
@@ -75,7 +75,7 @@ const Post = ({post, source, readingTime}: Props) => {
 											">
 				<div className="w-full">
 					<div className="aspect-h-3 aspect-w-4">
-						<Image layout="fill" src={post.thumbnail ?? '/404.jpg'} alt={post.title + ' image'}/>
+						<Image layout="fill" val={post.thumbnail} alt={post.title + ' image'}/>
 					</div>
 				</div>
 				<div className="flex flex-col py-2

@@ -1,6 +1,6 @@
 import {Link, CategoryLabel, TagList} from './'
 import {Post} from '@/types'
-import Image from 'next/image'
+import {Image} from '@/components'
 
 type Props = {
 	post: Post | any
@@ -53,7 +53,7 @@ const Banner = ({post}: Props) => {
 			</div>
 			<div className="flex-1">
 				<div className="w-full aspect-w-4 aspect-h-3">
-					<Image layout="fill" src={post.thumbnail}
+					<Image layout="fill" val={post.thumbnail}
 								 alt={post.title + ' title'}
 								 className="object-cover"
 					/>
