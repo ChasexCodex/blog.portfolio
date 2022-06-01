@@ -11,12 +11,13 @@ export const getStaticProps: GetStaticProps = async () => {
 	const res = await prisma.post.findMany({
 		take: postsCount,
 		where: {published: true},
-		orderBy: {created_at: 'asc'},
+		orderBy: {created_at: 'desc'},
 		select: {
 			id: true,
 			title: true,
 			slug: true,
 			author: true,
+			description: true,
 			published: true,
 			created_at: true,
 			updated_at: true,
