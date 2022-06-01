@@ -3,9 +3,13 @@ const nextConfig = {
 	reactStrictMode: true,
 	images: {
 		domains: [
-			'kljartebtwlzfnpkvulb.supabase.co'
+			'kljartebtwlzfnpkvulb.supabase.co',
 		]
-	}
+	},
+	i18n: {
+		locales: ["en"],
+		defaultLocale: "en",
+	},
 }
 
 module.exports = nextConfig
