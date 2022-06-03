@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@prisma/client": "^3.14.0",
-    "@supabase/supabase-js": "^1.35.3",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "axios": "^0.27.2",
     "github-markdown-css": "^5.1.0",
