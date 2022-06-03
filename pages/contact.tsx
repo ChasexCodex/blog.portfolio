@@ -26,7 +26,7 @@ const ContactPage: NextPage = () => {
 
 	return (
 		<form id="contact-form" onSubmit={onsubmit}
-					className="flex-1 flex flex-col py-4 space-y-2 mx-auto w-full max-w-5xl">
+					className="flex-1 flex flex-col py-4 space-y-2 mx-auto w-full max-w-5xl px-3">
 			<Head>
 				<title>Contact Page</title>
 				<meta name="description" content="Contact the webmaster here" key="desc"/>
