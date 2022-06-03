@@ -37,8 +37,8 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const MainHeading = () => (
-	<section className="w-full dark:text-white h-80 flex">
-		<p className="px-2 pt-4 text-2xl xl:text-5xl leading-snug">
+	<section className="w-full dark:text-white xl:h-80 flex flex-col xl:flex-row">
+		<p className="pt-4 text-2xl xl:text-5xl leading-snug pb-4 xl:pb-0">
 			Discover the potentials of technology. Follow Elyas A. Al-Amri every week for new information.
 		</p>
 		<div className="relative">
@@ -56,7 +56,7 @@ type Props = {
 
 const Home: NextPage<Props> = ({posts}) => (
 	<div className="w-full flex flex-col items-center">
-		<div className="w-full max-w-6xl my-4">
+		<div className="w-full max-w-6xl my-4 px-3">
 			<MainHeading/>
 
 			<div className="border-t-4 my-4"/>
