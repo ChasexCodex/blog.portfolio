@@ -34,19 +34,24 @@ const FooterInfo = () => (
 )
 
 const NavBar = () => (
-	<nav className="h-20 shadow-md flex flex-row items-center px-4 dark:bg-black dark:text-gray-200">
-		<Link href="/" className="mr-auto text-xl font-bold xl:text-4xl">
+	<nav className="shadow-md flex flex-col justify-center items-center px-2 py-2.5
+	 								xl:px-4 xl:flex-row xl:py-6
+	 								dark:bg-black dark:text-gray-200">
+		<Link href="/" className="text-4xl pb-4 font-bold xl:pb-0 xl:mr-auto">
 			Elyas Al-Amri{'\''}s Blog
 		</Link>
-		<div className="space-x-4 text-md xl:text-xl">
-			<Link href="/posts/page/1" className="font-bold">
+		<div className="space-x-4 text-lg pt-1 font-bold
+										xl:text-xl">
+			<Link href="/posts/page/1"
+						className="px-2 rounded-sm outline outline-2 hover:bg-white hover:text-black transition">
 				Posts
 			</Link>
-			<Link href="/contact" className="font-bold">
+			<Link href="/contact"
+						className="px-2 rounded-sm outline outline-2 hover:bg-white hover:text-black transition">
 				Contact Me
 			</Link>
-			<a className="font-extrabold"
-				 href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}>
+			<a href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}
+				 className="font-extrabold px-2 rounded-sm outline outline-2 outline-yellow-400 hover:bg-yellow-400 hover:text-black transition">
 				Portfolio
 			</a>
 		</div>
