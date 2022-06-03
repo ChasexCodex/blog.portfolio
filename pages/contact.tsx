@@ -26,19 +26,19 @@ const ContactPage: NextPage = () => {
 					className="flex-1 flex flex-col py-4 space-y-2 mx-auto w-full max-w-5xl">
 			<div>
 				<label htmlFor="name" className="block mr-2 mb-1 dark:text-white">Name</label>
-				<input type="text" placeholder="Your Name..." required
+				<input type="text" name="name" required placeholder="Your Name..."
 							 className="block w-full px-1.5 py-1 rounded-sm bg-zinc-300 shadow dark:shadow-neutral-400"/>
 			</div>
 
 			<div>
 				<label htmlFor="email" className="block mr-2 mb-1 dark:text-white">Email</label>
-				<input type="email" required placeholder="Your Email..."
+				<input type="email" name="email" required placeholder="Your Email..."
 							 className="block w-full px-1.5 py-1 rounded-sm bg-zinc-300 shadow dark:shadow-neutral-400"/>
 			</div>
 
 			<div>
 				<label htmlFor="subject" className="block mr-2 mb-1 dark:text-white">Subject</label>
-				<input type="text" required placeholder="Subject..."
+				<input type="text" name="subject" required placeholder="Subject..."
 							 className="block w-full px-1.5 py-1 rounded-sm bg-zinc-300 shadow dark:shadow-neutral-400"/>
 			</div>
 
