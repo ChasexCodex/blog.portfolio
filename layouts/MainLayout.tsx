@@ -6,10 +6,15 @@ const FooterInfo = () => (
 	<footer className="h-20 xl:h-32 flex flex-row bg-gray-900 pl-4 space-x-4 mt-4">
 		<div className="flex-1 flex flex-row items-center justify-around text-white font-semibold text-md
 											xl:text-2xl">
-			<Link href="/posts/page/1">Posts</Link>
+			<Link href="/posts/page/1">
+				Posts
+			</Link>
 			<a href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}>
 				Portfolio
 			</a>
+			<Link href="/contact">
+				Contact Me
+			</Link>
 		</div>
 		<div className="bg-white flex flex-row justify-center items-center space-x-4 px-4 xl:space-x-8 py-4 xl:px-8
 											dark:text-white dark:bg-gradient-to-tr dark:from-black dark:to-neutral-600
@@ -34,6 +39,9 @@ const NavBar = () => (
 			Elyas Al-Amri{'\''}s Blog
 		</Link>
 		<div className="space-x-4 text-md xl:text-xl">
+			<Link href="/posts/page/1" className="font-bold">
+				Posts
+			</Link>
 			<Link href="/contact" className="font-bold">
 				Contact Me
 			</Link>
