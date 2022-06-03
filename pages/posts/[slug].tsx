@@ -90,7 +90,7 @@ const Post: NextPage<Props> = ({post, source, readingTime}) => (
 			))}
 
 		</Head>
-		<div className="flex flex-col
+		<section className="flex flex-col
 										dark:text-white
 										xl:flex-row">
 			<div className="w-full">
@@ -128,7 +128,7 @@ const Post: NextPage<Props> = ({post, source, readingTime}) => (
 					</p>
 				</div>
 			</div>
-		</div>
+		</section>
 
 		<div className="border-t-4 border-b-4 h-[10px]"/>
 
