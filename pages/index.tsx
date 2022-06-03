@@ -49,7 +49,7 @@ const Home: NextPage<Props> = ({posts}) => (
 				</p>
 				<div className="relative">
 					<div className="aspect-h-4 aspect-w-3 xl:w-60">
-						<Image layout="fill" src={process.env.NEXT_PUBLIC_AUTHOR_IMAGE_URL ?? '/404.jpg'}/>
+						<Image layout="fill" src={process.env.NEXT_PUBLIC_AUTHOR_IMAGE_URL ?? '/404.jpg'} alt="Webmaster's Image"/>
 						<div className="absolute inset-0 opacity-50 bg-gradient-to-br to-blue-900 from-red-300"/>
 					</div>
 				</div>
