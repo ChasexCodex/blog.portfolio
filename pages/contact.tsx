@@ -1,8 +1,29 @@
 import {NextPage} from 'next'
+import {http} from '@/utils/http'
+import {useRouter} from 'next/router'
+import {FormEvent} from 'react'
 
 const ContactPage: NextPage = () => {
+	const router = useRouter()
+	const onsubmit = async (e: FormEvent) => {
+		e.preventDefault()
+		try {
+			const form = document.querySelector<HTMLFormElement>('#contact-form')!
+			const data = new FormData(form)
+			await http.post('/api/contact', data)
+			// TODO: replace confirm dialog with a message pop-up
+			if (confirm('Contact has been sent successfully. Do you want to be rediected to the home page')) {
+				await router.push('/')
+			}
+		} catch (e) {
+			console.log(e)
+			// TODO: display error to the user
+		}
+	}
+
 	return (
-		<form className="flex-1 flex flex-col py-4 space-y-2 mx-auto w-full max-w-5xl">
+		<form id="contact-form" onSubmit={onsubmit}
+					className="flex-1 flex flex-col py-4 space-y-2 mx-auto w-full max-w-5xl">
 			<div>
 				<label htmlFor="name" className="block mr-2 mb-1 dark:text-white">Name</label>
 				<input type="text" placeholder="Your Name..."
