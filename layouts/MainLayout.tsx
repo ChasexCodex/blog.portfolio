@@ -3,9 +3,9 @@ import Image from 'next/image'
 import {Link} from '@/components'
 
 const FooterInfo = () => (
-	<footer className="h-20 xl:h-32 flex flex-row bg-gray-900 pl-4 space-x-4 mt-4">
-		<div className="flex-1 flex flex-row items-center justify-around text-white font-semibold text-md
-											xl:text-2xl">
+	<footer className="flex flex-row bg-gray-900 pl-4 space-x-4 mt-4">
+		<div className="flex-1 flex flex-col items-center justify-around text-white font-semibold text-md py-4 space-y-2
+										xl:text-2xl xl:flex-row">
 			<Link href="/posts/page/1">
 				Posts
 			</Link>
@@ -17,8 +17,7 @@ const FooterInfo = () => (
 			</Link>
 		</div>
 		<div className="bg-white flex flex-row justify-center items-center space-x-4 px-4 xl:space-x-8 py-4 xl:px-8
-											dark:text-white dark:bg-gradient-to-tr dark:from-black dark:to-neutral-600
-											">
+											dark:text-white dark:bg-gradient-to-tr dark:from-black dark:to-neutral-600">
 			<div className="text-xs xl:text-xl w-max">
 				<p className="text-center font-semibold italic">Made by</p>
 				<p>Elyas A. Al-Amri</p>
