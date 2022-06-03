@@ -66,7 +66,7 @@ const Posts: NextPage<Props> = ({posts, page, maxPage}) => (
 			<meta property="og:image" content={`${process.env.NEXT_PUBLIC_APP_URL}/website.jpg`} key="og:image"/>
 			<meta property="og:image:type" content="image/jpeg"/>
 			<meta property="og:image:width" content="1000"/>
-			<meta property="og:image:height" content="425" />
+			<meta property="og:image:height" content="425"/>
 			<meta property="og:image:alt" content="Elyas with ambitous text"/>
 			<meta property="og:url" content={process.env.NEXT_PUBLIC_APP_URL} key="og:url"/>
 			<meta property="og:description" content="Elyas A. Al-Amri's Official Blog. Join me every week for new posts." key="og:desc"/>
@@ -75,8 +75,7 @@ const Posts: NextPage<Props> = ({posts, page, maxPage}) => (
 		</Head>
 
 		<div className="grid grid-cols-1 mx-auto gap-y-8 w-full max-w-screen-2xl my-4
-										xl:grid-cols-2 xl:gap-2
-										">
+										xl:grid-cols-2 xl:gap-2">
 			{posts.map(post =>
 				<div key={post.id} className="h-96 xl:h-64">
 					<Banner post={post}/>
@@ -86,8 +85,7 @@ const Posts: NextPage<Props> = ({posts, page, maxPage}) => (
 
 		{/*Pagination*/}
 		<div className="flex flex-row mx-auto mt-auto text-2xl
-										dark:text-white
-										">
+										dark:text-white">
 			{page > 1 &&
 				<Link href={`/posts/page/${page - 1}`}
 							className="border px-1 pb-0.5 font-extrabold bg-blue-700 first:rounded-l">

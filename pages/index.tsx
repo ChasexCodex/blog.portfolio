@@ -40,20 +40,18 @@ type Props = {
 	posts: Post[]
 }
 
-const Home: NextPage<Props> = ({posts}) => {
-	return (
-		<div className="w-full flex flex-col items-center">
-			<div className="w-full max-w-6xl my-4">
-				<div className="grid grid-column-1 gap-y-4">
-					{posts.map(post => (
-						<div key={post.id} className="h-[30rem] xl:h-96">
-							<Banner post={post}/>
-						</div>
-					))}
-				</div>
+const Home: NextPage<Props> = ({posts}) => (
+	<div className="w-full flex flex-col items-center">
+		<div className="w-full max-w-6xl my-4">
+			<div className="grid grid-column-1 gap-y-4">
+				{posts.map(post => (
+					<div key={post.id} className="h-[30rem] xl:h-96">
+						<Banner post={post}/>
+					</div>
+				))}
 			</div>
 		</div>
-	)
-}
+	</div>
+)
 
 export default Home
