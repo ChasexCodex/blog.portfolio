@@ -1,4 +1,5 @@
 import {NextPage} from 'next'
+import Head from 'next/head'
 import {http} from '@/utils/http'
 import {useRouter} from 'next/router'
 import {FormEvent} from 'react'
@@ -26,6 +27,10 @@ const ContactPage: NextPage = () => {
 	return (
 		<form id="contact-form" onSubmit={onsubmit}
 					className="flex-1 flex flex-col py-4 space-y-2 mx-auto w-full max-w-5xl">
+			<Head>
+				<title>Contact Page</title>
+				<meta name="description" content="Contact the webmaster here" key="desc"/>
+			</Head>
 			<div>
 				<label htmlFor="name" className="block mr-2 mb-1 dark:text-white">Name</label>
 				<input type="text" name="name" required placeholder="Your Name..."
