@@ -36,10 +36,15 @@ const NavBar = () => {
 			<Link href="/" className="mr-auto text-xl font-bold xl:text-4xl">
 				Elyas Al-Amri{'\''}s Blog
 			</Link>
-			<a className="text-md xl:text-xl font-extrabold"
-				 href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}>
-				Portfolio
-			</a>
+			<div className="space-x-4 text-md xl:text-xl">
+				<Link href="/contact" className="font-bold">
+					Contact Me
+				</Link>
+				<a className="font-extrabold"
+					 href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}>
+					Portfolio
+				</a>
+			</div>
 		</nav>
 	)
 }
