@@ -9,7 +9,9 @@ const ContactPage: NextPage = () => {
 		e.preventDefault()
 		try {
 			const form = document.querySelector<HTMLFormElement>('#contact-form')!
-			const data = new FormData(form)
+			const formData = new FormData(form)
+			const data = Object.fromEntries(formData.entries())
+
 			await http.post('/api/contact', data)
 			// TODO: replace confirm dialog with a message pop-up
 			if (confirm('Contact has been sent successfully. Do you want to be rediected to the home page')) {
