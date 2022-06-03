@@ -4,8 +4,7 @@ const AboutCard = () => (
 	<div className="shadow-md shadow-black mt-8 flex flex-col dark:text-white
 									xl:flex-row">
 		<div className="p-4 bg-gradient-to-r from-purple-400 to-blue-700
-										dark:from-purple-800 dark:to-blue-800 dark:opacity-80
-										">
+										dark:from-purple-800 dark:to-blue-800 dark:opacity-80">
 			<p className="text-3xl font-bold pb-2">
 				About the author
 			</p>
