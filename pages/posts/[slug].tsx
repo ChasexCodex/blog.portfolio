@@ -1,4 +1,4 @@
-import {GetStaticPaths, GetStaticProps} from 'next'
+import {GetStaticPaths, GetStaticProps, NextPage} from 'next'
 import {prisma} from '@/prisma'
 import {Post, Tag} from '@/types'
 import {MDXRemote, MDXRemoteSerializeResult} from 'next-mdx-remote'
@@ -64,7 +64,7 @@ type Props = {
 	readingTime: string
 }
 
-const Post = ({post, source, readingTime}: Props) => (
+const Post: NextPage<Props> = ({post, source, readingTime}) => (
 	<div className="flex flex-col max-w-5xl w-full mx-auto py-4 px-4">
 		<Head>
 			<title>{post.title} | by {post.author}</title>
