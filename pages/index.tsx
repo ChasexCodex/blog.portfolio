@@ -1,7 +1,7 @@
 import type {GetStaticProps, NextPage} from 'next'
 import {Post} from '@/types'
 import {prisma} from '@/prisma'
-import {Banner} from '@/components'
+import {Banner, Image} from '@/components'
 import {convertTimestampToMoment} from '@/utils/orm'
 
 const postsCount = 10
@@ -43,6 +43,20 @@ type Props = {
 const Home: NextPage<Props> = ({posts}) => (
 	<div className="w-full flex flex-col items-center">
 		<div className="w-full max-w-6xl my-4">
+			<section className="w-full dark:text-white h-80 flex">
+				<p className="px-2 pt-4 text-5xl leading-snug">
+					Discover the potentials of technology. Follow Elyas A. Al-Amri every week for new information.
+				</p>
+				<div className="relative">
+					<div className="aspect-h-4 aspect-w-3 xl:w-60">
+						<Image layout="fill" src={process.env.NEXT_PUBLIC_AUTHOR_IMAGE_URL ?? '/404.jpg'}/>
+						<div className="absolute inset-0 opacity-50 bg-gradient-to-br to-blue-900 from-red-300"/>
+					</div>
+				</div>
+			</section>
+
+			<div className="border-t-4 my-4"/>
+
 			<div className="grid grid-column-1 gap-y-4">
 				{posts.map(post => (
 					<div key={post.id} className="h-[30rem] xl:h-96">
