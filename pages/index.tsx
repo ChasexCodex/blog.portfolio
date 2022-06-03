@@ -36,6 +36,20 @@ export const getStaticProps: GetStaticProps = async () => {
 	}
 }
 
+const MainHeading = () => (
+	<section className="w-full dark:text-white h-80 flex">
+		<p className="px-2 pt-4 text-2xl xl:text-5xl leading-snug">
+			Discover the potentials of technology. Follow Elyas A. Al-Amri every week for new information.
+		</p>
+		<div className="relative">
+			<div className="aspect-h-4 aspect-w-3 xl:w-60">
+				<Image layout="fill" src={process.env.NEXT_PUBLIC_AUTHOR_IMAGE_URL ?? '/404.jpg'} alt="Webmaster's Image"/>
+				<div className="absolute inset-0 opacity-50 bg-gradient-to-br to-blue-900 from-red-300"/>
+			</div>
+		</div>
+	</section>
+)
+
 type Props = {
 	posts: Post[]
 }
@@ -43,17 +57,7 @@ type Props = {
 const Home: NextPage<Props> = ({posts}) => (
 	<div className="w-full flex flex-col items-center">
 		<div className="w-full max-w-6xl my-4">
-			<section className="w-full dark:text-white h-80 flex">
-				<p className="px-2 pt-4 text-5xl leading-snug">
-					Discover the potentials of technology. Follow Elyas A. Al-Amri every week for new information.
-				</p>
-				<div className="relative">
-					<div className="aspect-h-4 aspect-w-3 xl:w-60">
-						<Image layout="fill" src={process.env.NEXT_PUBLIC_AUTHOR_IMAGE_URL ?? '/404.jpg'} alt="Webmaster's Image"/>
-						<div className="absolute inset-0 opacity-50 bg-gradient-to-br to-blue-900 from-red-300"/>
-					</div>
-				</div>
-			</section>
+			<MainHeading/>
 
 			<div className="border-t-4 my-4"/>
 
